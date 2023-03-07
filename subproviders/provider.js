@@ -16,7 +16,7 @@ function ProviderSubprovider(provider){
 ProviderSubprovider.prototype.handleRequest = function(payload, next, end){
   this.provider.sendAsync(payload, function(err, response) {
     if (err) return end(err)
-    if (response.error) return end(new Error(response.error.message))
+    if (response.error) return end(response.error)
     end(null, response.result)
   })
 }
